@@ -1,0 +1,29 @@
+{
+  "name": "y-or-n",
+  "version": "1.0.0",
+  "description": "get y/n answer from user on terminal via callback",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marinintim/y-or-n.git"
+  },
+  "keywords": [
+    "y-or-n",
+    "choice",
+    "terminal",
+    "confirm"
+  ],
+  "author": "Marinin Tim <mt@marinin.xyz>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marinintim/y-or-n/issues"
+  },
+  "homepage": "https://github.com/marinintim/y-or-n#readme",
+  "devDependencies": {
+    "from2-string": "^1.1.0",
+    "tape": "^4.6.0"
+  }
+}
