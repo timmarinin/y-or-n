@@ -17,7 +17,7 @@ yorn('Is it dark?', function(err, answer) {
 
 ## Options
 
-y-or-n supports few options that you can pass in a second arguments, like this:
+y-or-n supports few options that you can pass as a second argument, like this:
 
 ```
 const yorn = require('y-or-n')

@@ -38,7 +38,7 @@ module.exports = function (msg, opts, cb) {
             /* timeout, bailing out */
             var err = new Error('User did not provide an answer in expected timeframe')
             err.code = 'ETIMEOUT'
-            cb(err, !!opts.defaultAnswer)
+            cb(err, opts.defaultAnswer)
         }
     }, 0)
 }
