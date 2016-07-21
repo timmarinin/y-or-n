@@ -47,14 +47,44 @@ test('timeout', t => {
 test('handleAnswer', t => {
     const yorn = require('./')
     const handleAnswer = yorn.handleAnswer
-    t.test('it should call back with true on yY', t => {
+    t.test('handleAnswer calls back with true on yY', t => {
         t.plan(2)
         handleAnswer('y', (err, answer) => t.ok(answer))
         handleAnswer('Y', (err, answer) => t.ok(answer))
     })
-    t.test('it should call back with false on nN', t => {
+    t.test('handleAnswer calls back with false on nN', t => {
         t.plan(2)
         handleAnswer('n', (err, answer) => t.notOk(answer))
         handleAnswer('N', (err, answer) => t.notOk(answer))
+    })
+    t.test('handleAnswer calls back with false on unknown input', t => {
+        t.plan(1)
+        handleAnswer('a', (err, answer) => t.notOk(answer))
+    })
+    t.test('handleAnswer calls back with default answer on unknown input with strictNn opts', t => {
+        t.plan(1)
+        const defaultAnswer = { unknownInput: true }
+        handleAnswer('a', (err, answer) => t.equal(answer, defaultAnswer), {
+            defaultAnswer,
+            strictNn: true,
+        })
+    })
+})
+
+test('defaultAnswer on unknown', t => {
+    const yorn = require('./')
+
+    t.plan(2)
+
+    const input = fromString('qwe')
+    const output = new stream.PassThrough
+
+    yorn('Placeholder', {
+        input, output,
+        defaultAnswer: true,
+        strictNn: true,
+    }, (err, answer) => {
+        t.notOk(err, 'there should be no error')
+        t.equal(answer, true, 'should pass defaultAnswer')
     })
 })

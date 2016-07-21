@@ -17,16 +17,17 @@ yorn('Is it dark?', function(err, answer) {
 
 ## Options
 
-y-or-n supports few options that you can pass as a second argument, like this:
+y-or-n supports few options that you can pass as a second argument. Default values:
 
 ```
 const yorn = require('y-or-n')
 
 yorn('Are you OK? y/n', {
-  timeout: 5000, // ms, defaults to 0, no timeout
-  defaultAnswer: true, // will be used in case of timeout, defaults to false
-  input: process.stdin, // defaults to process.stdin
-  output: process.stdout, // defaults to process.stdout
+  timeout: 0, // ms, 0 means no timeout
+  defaultAnswer: false, // read section below
+  input: process.stdin, // Readable stream
+  output: process.stdout, // Writable stream
+  strictNn: false // accept only n or N as false answer
 }, function getAnswer (err, answer) {
     if (err) {
         // if user didn't enter anything before timeout
@@ -36,6 +37,11 @@ yorn('Are you OK? y/n', {
         // is defaultAnswer from options object
     }
 })
+
+### opts.defaultAnswer
+
+Value that is used in few cases, namely when timeout is set and expired, when strictNn is set and input is not any of [yYnN].
+
 ```
 
 ## License
